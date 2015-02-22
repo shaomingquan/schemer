@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>MyList</title>
+	<link rel="stylesheet" href="stylesheets/editor.css">
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<h1>Schemer</h1>
+			<input type="button" id="getValue" value="run">
+			<input type="button" id="about" value="about">
+		</div>
+		<div id="content">
+			<div id="editorStage"></div>
+			<div id="logStage"></div>
+		</div>
+	</div>
+	<script src="scripts/lispLib.js"></script>
+	<script src="scripts/lispCore.js"></script>
+	<script src="scripts/lispAnyText.js"></script>
+	<script src="ace/ace.js"></script>
+	<script>
+	    var editor = ace.edit("editorStage");
+	    editor.getSession().setMode("ace/mode/lisp");
+	    editor.focus();
+	    document.getElementById("getValue").onclick = function(){
+	    	theGlobalEnvironment = setupEnvironment();
+	    	ec = textToEvalCode(editor.getValue())
+	    	traverse(ec);
+	    	var result = EVAL(ec,theGlobalEnvironment);
+	    	document.getElementById("logStage").innerHTML = ifcons(result) ? printList(result) : result ;
+	    }
+	    document.getElementById("about").onclick = function(){
+	    	alert("Schemer verson 1.0.0 : \nprint the last exp!");
+	    }
+	</script>
+</body>
+</html>

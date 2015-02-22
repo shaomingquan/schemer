@@ -1,0 +1,27 @@
+/*editor.css*/
+#main{
+	height: 100%;
+	width: 1000px;
+	border-left: 2px black solid;
+	border-right: 2px black solid;
+	border-bottom: 2px black solid;
+	margin: 0px auto;
+}
+#header{
+	padding: 10px;
+	border-bottom: 2px black solid;
+}
+#content{
+	height: 400px;
+}
+#editorStage{
+	width: 599px;
+	height: 100%;
+	float: left;
+}
+#logStage{
+	width: 399px;
+	height: 100%;
+	float: left;
+	border-left: 2px black solid;
+}
